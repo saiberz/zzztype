@@ -18,6 +18,9 @@
 
   </head>
   <body>
+    
+    <audio id= "audio" src="error.ogg" >
+      </audio>
 
     <div ng-app="MyApp" ng-controller = "init">
       <div tabindex="1" ng-keypress="keypress($event)" style = "border:solid; width: 500px; height: 900px;">
@@ -25,6 +28,9 @@
           Start
         </button>
         <h1>{{focus}}</h1>
+        <ul>
+          <li ng-repeat = "x in list">{{x}}</li>
+        </ul>
 
 
 
