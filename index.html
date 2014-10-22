@@ -38,29 +38,29 @@
 
       <script>
        var stage = new PIXI.Stage(0x6F6A99);
+       var WordsList = [];
+       var trolls = [];
        var renderer = PIXI.autoDetectRenderer(800, 600);
        document.getElementById("pixi").appendChild(renderer.view);
        requestAnimFrame( animate );
 
        function animate() {
 
-	 requestAnimFrame( animate );
-         // just for fun, lets rotate mr rabbit a little
-         text.position.y += 0.2;
-         text.position.x += 0.2;    
-         text.rotation += 0.01;
-         // render the stage
-         renderer.render(stage);
-
+	 requestAnimFrame( animate );         
+         text.position.y += 0.2; 
+         
+         renderer.render(stage);                  
        }
        var texture = PIXI.Texture.fromImage("images/traxes.png");
-       var hero = new PIXI.Sprite(texture);
-       hero.anchor.x = 0.5;
-       hero.anchor.y = 0.5;
+       var hero = new PIXI.Sprite(texture);       
+
+       
+
        hero.position.x = 400;
-       hero.position.y = 300;
+       hero.position.y = 300;         
        var text = new PIXI.Text("",
-                                {font:"20px Arial", fill:"red"});     
+                                 {font:"20px Arial", fill:"red"});
+       text.position.x = 100;
        stage.addChild(text);
        stage.addChild(hero);
        renderer.render(stage);          

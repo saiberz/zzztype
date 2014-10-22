@@ -5,7 +5,7 @@ app.controller("init",function ($scope,$resource){
     var WordAPI = $resource("http://randomword.setgetgo.com/get.php",
                             { callback: "JSON_CALLBACK" },
                             { get: { method: "JSONP" }});
-    var WordsList = [];
+    
     $scope.list  = [];
     var audioElement = document.getElementById('audio');
     var newWord = function (){
@@ -25,12 +25,11 @@ app.controller("init",function ($scope,$resource){
     $scope.Start = function() {
         $scope.focus = WordsList[0];
         actual = $scope.focus;      
-        text.setText(actual);  
+        text.setText(actual);        
         window.setInterval(function(){
-            
-            if(WordsList.length < 10) {newWord();}
-            
-            console.log(WordsList);
+            if(WordsList.length < 10) {newWord();}    
+            var troll = new PIXI.Text("",{font:"20px Arial", fill:"red"});                   
+            trolls.push(troll);
         }, 1000);
         alert("start");        
         
