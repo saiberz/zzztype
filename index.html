@@ -16,28 +16,59 @@
     <!-- Chance -->
     <script src="http://chancejs.com/chance.js"></script>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pixi.js/1.6.1/pixi.js"></script>
+
   </head>
   <body>
     
     <audio id= "audio" src="error.ogg" >
-      </audio>
-
-    <div ng-app="MyApp" ng-controller = "init">
-      <div tabindex="1" ng-keypress="keypress($event)" style = "border:solid; width: 500px; height: 900px;">
-        <button ng-click="Start()">
-          Start
-        </button>
-        <h1>{{focus}}</h1>
-        <ul>
-          <li ng-repeat = "x in list">{{x}}</li>
-        </ul>
-
-
+    </audio>
+    <div id="pixi">
+      <div ng-app="MyApp" ng-controller = "init">
+        <div tabindex="1" ng-keypress="keypress($event)" >
+          <button ng-click="Start()">
+            Start
+          </button>        
+        </div>
+      </div>        
 
       </div>
-    </div>
 
-    <script src="script.js"></script>
+    
+
+      <script>
+       var stage = new PIXI.Stage(0x6F6A99);
+       var renderer = PIXI.autoDetectRenderer(800, 600);
+       document.getElementById("pixi").appendChild(renderer.view);
+       requestAnimFrame( animate );
+
+       function animate() {
+
+	 requestAnimFrame( animate );
+         // just for fun, lets rotate mr rabbit a little
+         text.position.y += 0.2;
+         text.position.x += 0.2;    
+         text.rotation += 0.01;
+         // render the stage
+         renderer.render(stage);
+
+       }
+       var texture = PIXI.Texture.fromImage("images/traxes.png");
+       var hero = new PIXI.Sprite(texture);
+       hero.anchor.x = 0.5;
+       hero.anchor.y = 0.5;
+       hero.position.x = 400;
+       hero.position.y = 300;
+       var text = new PIXI.Text("",
+                                {font:"20px Arial", fill:"red"});     
+       stage.addChild(text);
+       stage.addChild(hero);
+       renderer.render(stage);          
+       
+      </script>    
+
+      <script src="script.js"></script>  
+    
 
 
 

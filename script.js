@@ -24,16 +24,17 @@ app.controller("init",function ($scope,$resource){
     
     $scope.Start = function() {
         $scope.focus = WordsList[0];
-        actual = $scope.focus;        
+        actual = $scope.focus;      
+        text.setText(actual);  
         window.setInterval(function(){
-            newWord();
-            console.log("new word");
-        }, 2000);
-    
+            
+            if(WordsList.length < 10) {newWord();}
+            
+            console.log(WordsList);
+        }, 1000);
+        alert("start");        
         
-    };
-
-
+    };    
      $scope.keypress = function(keyEvent) {         
         if(keyEvent.key == $scope.focus[0]){            
             actual = actual.substr(1,actual.length);
@@ -47,8 +48,13 @@ app.controller("init",function ($scope,$resource){
              audioElement.currentTime = 0;
              audioElement.play();
          }
+         text.setText(actual);
+         renderer.render(stage);
         $scope.focus = actual;
     };
+
+
+    
 
 
 });
