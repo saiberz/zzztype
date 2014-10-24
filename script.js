@@ -28,10 +28,10 @@ app.controller("init",function ($scope,$resource){
         text.setText(actual);        
         window.setInterval(function(){
             if(WordsList.length < 10) {newWord();}    
-            var troll = new PIXI.Text("",{font:"20px Arial", fill:"red"});                   
+            var troll = new PIXI.Text("",{font:"20px Arial", fill:"yellow"});                   
             trolls.push(troll);
         }, 1000);
-        alert("start");        
+//        alert("start");        
         
     };    
      $scope.keypress = function(keyEvent) {         
